@@ -51,7 +51,7 @@ Cypress.Commands.add('deleteSpace', () => {
 
 // Login and get the auth token
 Cypress.Commands.add('loginAPI', () => {
-  cy.fixture('example').then((data) => {
+  cy.fixture('api').then((data) => {
       cy.request({
           method: 'POST',
           url: data.loginurl,
@@ -73,7 +73,7 @@ Cypress.Commands.add('loginAPI', () => {
 
 Cypress.Commands.add('invalidloginAPI', () => {
    
-  cy.fixture('example').then(function (data) {
+  cy.fixture('api').then(function (data) {
   cy.request({
     method: 'POST',
     url: data.loginurl,
@@ -99,7 +99,7 @@ Cypress.Commands.add('invalidloginAPI', () => {
 // Fetch workspace and delete if it exists
 Cypress.Commands.add('manageWorkspace', () => {
   const authToken = Cypress.env('authToken');
-  cy.fixture('example').then((data) => {
+  cy.fixture('api').then((data) => {
       const apiUrl = 'https://app.respond.io/api/organization/245928/spaces';
 
       cy.request({
@@ -108,8 +108,8 @@ Cypress.Commands.add('manageWorkspace', () => {
           headers: {
             'Accept': 'application/json, text/plain, */*',
               'Authorization':  `Bearer ${authToken}`,
-              'Content-Type': 'application/json',
-              'orgid': '245928'
+              'Content-Type': data.contentType,
+              'orgid': data.orgID
           },
           body: {
              "search": "",
@@ -141,15 +141,15 @@ Cypress.Commands.add('manageWorkspace', () => {
 // Create a new workspace
 Cypress.Commands.add('createWorkspaceAPI', () => {
   const authToken = Cypress.env('authToken');
-  cy.fixture('example').then((data) => {
-      const apiUrl = `https://app.respond.io/api/organization/245928/spaces/create`;
+  cy.fixture('api').then((data) => {
+      const apiUrl = data.workspaceUrl;
       cy.request({
           method: 'POST',
           url: apiUrl,
           headers: {
               'Authorization': `Bearer ${authToken}`,
               'Content-Type': 'application/json',
-              'orgid': '245928'
+              'orgid': data.orgID
           },
           body: {
               name: data.workspacename,
@@ -166,7 +166,7 @@ Cypress.Commands.add('createWorkspaceAPI', () => {
 // Delete workspace by ID
 Cypress.Commands.add('deleteWorkspace', (workspaceId) => {
   const authToken = Cypress.env('authToken');
-  cy.fixture('example').then((data) => {
+  cy.fixture('api').then((data) => {
       const apiUrl = `https://app.respond.io/api/organization/245928/spaces/${workspaceId}`;
       cy.request({
           method: 'DELETE',
@@ -174,11 +174,11 @@ Cypress.Commands.add('deleteWorkspace', (workspaceId) => {
           headers: {
               'Authorization': `Bearer ${authToken}`,
               'Content-Type': 'application/json',
-              'orgid': data.orgId
+              'orgid': data.orgID
           }
       }).then((response) => {
           expect(response.status).to.eq(200);
-          cy.log(`Workspace with ID ${workspaceId} deleted.`);
+          console.log(`Workspace with ID ${workspaceId} deleted.`);
       });
   });
 });
@@ -187,7 +187,7 @@ Cypress.Commands.add('deleteWorkspace', (workspaceId) => {
 Cypress.Commands.add('assignUser', () => {
   const authToken = Cypress.env('authToken');
   cy.get('@workspaceId').then((workspaceId) => {
-      cy.fixture('example').then((data) => {
+      cy.fixture('api').then((data) => {
           const apiUrl = `https://app.respond.io/api/organization/245928/spaces/users`;
           cy.request({
               method: 'POST',

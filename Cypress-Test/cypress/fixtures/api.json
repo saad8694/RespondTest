@@ -1,0 +1,14 @@
+{
+  
+  "apiemail": "respondtestedapi@mailinator.com",
+  "password": "Respond123$",
+  "invalidpassword": "12ss34",
+  "contentType": "application/json",
+  "accept": "application/json",
+  "loginurl": "https://app.respond.io/auth/login",
+  "workspaceUrl": "https://app.respond.io/api/organization/245928/spaces/create",
+  "orgID": "245928",
+  "WSName": "Tester",
+  "timezone": "Asia/Karachi",
+  "workspacename" : "Test Workspace"
+}

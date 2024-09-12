@@ -1,6 +1,6 @@
 ///<reference types = "cypress"/>
 
-import General from "../pageObjects/general"
+import General from "../../pageObjects/general"
 const gen = new General()
 
 describe('User Workspace Flow Test Suite', () => {
