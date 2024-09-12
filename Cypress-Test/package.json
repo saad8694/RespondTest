@@ -1,0 +1,21 @@
+
+
+{
+  
+    "scripts": {
+      "cypress:run-login": "cypress run --spec \"cypress/e2e/login.cy.js,cypress/e2e/workSpaceFlow.cy.js\"",
+      "cypress:run-workspace": "cypress run --spec \"cypress/e2e/workSpaceFlow.cy.js\"",
+       "cypress:run-workspace-api": "cypress run --spec \"cypress/e2e/API/workSpaceAPI.cy.js\"",
+       "cypress:run-login-api": "cypress run --spec \"cypress/e2e/API/loginAPI.cy.js\""
+
+    },
+  
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "allure-commandline": "^2.30.0",
+    "allure-cypress": "^3.0.0-beta.12",
+    "cypress": "^13.14.2",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mocha-allure-reporter": "^1.4.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "email": "respondtested@mailinator.com",
+  "apiemail": "respondtestedapi@mailinator.com",
+  "password": "Respond123$",
+  "invalidpassword": "12ss34",
+  "workSpace": "Test Space",
+  "error": "Sorry, your workspaces limit has reached. Please upgrade your plan.",
+  "invalidCreds": "Incorrect username or password.",
+  "contentType": "application/json",
+  "accept": "application/json",
+  "loginurl": "https://app.respond.io/auth/login",
+  "workspaceUrl": "https://app.respond.io/api/organization/245517/spaces/create",
+  "orgID": 245517,
+  "WSName": "Tester",
+  "timezone": "Asia/Karachi",
+  "workspacename" : "Test Workspace"
+}
