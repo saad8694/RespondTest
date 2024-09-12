@@ -83,7 +83,7 @@ Cypress.Commands.add('invalidloginAPI', () => {
       'accept': data.accept
     },
     body: {
-      email: data.email,
+      email: data.apiemail,
       password: data.invalidpassword
     }
   }).then((response) => {
